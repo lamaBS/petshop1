@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        tools:context=".home">
+        <!-- F5CB5C #FCE196  #ED6B69 FCE196-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="207dp"
+                    android:layout_height="109dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="16dp"
+                    android:src="@drawable/common_full_open_on_phone" />
+
+                <EditText
+                    android:id="@+id/CustomerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="البريد الالكتروني"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="8dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fff"/>
+
+                <EditText
+                    android:id="@+id/CustomerPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="*******"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="8dp"
+
+                    android:textStyle="bold"
+                    tools:targetApi="jelly_bean_mr1" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fff"/>
+
+                <Button
+                    android:id="@+id/CustomerBtnLogin"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="#ff4444"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:text="انا بائع"
+                    android:textAllCaps="false"
+                    android:textColor="#242423" />
+
+                <Button
+                    android:id="@+id/L"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="#ff4444"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:text="انا مشتري"
+                    android:textAllCaps="false" />
+
+                <TextView
+                    android:id="@+id/CustomerSignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="انشاء حساب"
+                    android:onClick="regester"
+                    android:textColor="#ffff"
+                    android:background="@color/colorPrimaryDark"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
