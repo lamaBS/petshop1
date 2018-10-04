@@ -22,6 +22,9 @@
         <activity
             android:name=".signup"
             android:label="انشاء حساب" />
+        <activity
+            android:name=".addpet"
+            android:label="اضافة حيوان" />
     </application>
 
 </manifest>
