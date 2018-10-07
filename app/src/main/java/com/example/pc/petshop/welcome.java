@@ -8,22 +8,95 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+import android.view.View;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import android.widget.Button;
+import android.widget.Switch;
+import android.widget.TextView;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class welcome  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DatabaseReference UDB;
     private FirebaseAuth mAuth;
+    Button button;
+    DatabaseReference databaseref;
+    DatabaseReference databaseReferences;
+    TextView username;
+    TextView mail;
+    TextView phone;
+    TextView wwh;
+    Switch allow;
+    Switch available;
+    FirebaseAuth firebaseAuth;
+    private TextView location;
+    DatabaseReference database;
+    String address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
      Toolbar toolbar = findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
+
+       //
+
+
+
+        databaseref = FirebaseDatabase.getInstance().getReference();
+
+        // Read from the database
+        databaseref.child("seller").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+                String user1 = user.getUid();//customer id is the same as rating id to make it easy to refer
+
+                String name = dataSnapshot.child(user1).child("cfirstName").getValue(String.class);
+                String last = dataSnapshot.child(user1).child("clastName").getValue(String.class);
+                int phonnum = dataSnapshot.child(user1).child("cponeNoumber").getValue(int.class);
+                String email = dataSnapshot.child(user1).child("cemail").getValue(String.class);
+                String city = dataSnapshot.child(user1).child("city").getValue(String.class);
+
+                TextView profilename = (TextView) findViewById(R.id.user);
+                profilename.setText(name+" "+last);
+                mail = (TextView) findViewById(R.id.email);
+                mail.setText(" " + email);
+                phone = (TextView) findViewById(R.id.phone);
+                phone.setText(" " + phonnum + " ");
+                phone = (TextView) findViewById(R.id.city);
+                phone.setText(" " + city + " ");
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(welcome.this, "لايوجد اتصال بالانترنت", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+       //
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -33,6 +106,7 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
 public void showtext(){
@@ -112,4 +186,14 @@ public void showtext(){
         return false;
     }
 
+    public void viewsupllies(View view) {
+        Intent intent = new Intent(welcome.this, viewPets.class);
+        startActivity(intent);
+
+    }
+    public void viewpets(View view) {
+        Intent intent = new Intent(welcome.this, viewPets.class);
+        startActivity(intent);
+
+    }
 }

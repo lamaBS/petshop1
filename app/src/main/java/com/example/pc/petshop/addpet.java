@@ -49,7 +49,7 @@ public class addpet  extends AppCompatActivity {
             //get my id from firebase login id
             FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
             String user1 = user.getUid();//seller id
-            Pet t1= new Pet (user1,g,t,pr,tid,"",cit);
+            Pet t1= new Pet (user1,g,t,pr,tid,"",cit,c);
             myRef.child("Pet").child(tid).setValue(t1);
             Toast.makeText(addpet.this, "تمت اللإضافة", Toast.LENGTH_LONG).show();
         }

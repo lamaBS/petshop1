@@ -175,7 +175,7 @@
                 android:focusable="true"
                 android:onClick="addpet"
                 android:padding="16dp"
-                android:text="إضافة حيوان للبيع"
+                android:text="حفظ"
                 android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>

@@ -2,7 +2,7 @@ package com.example.pc.petshop;
 
 public class Pet {
 
-    private String ownerid,age,type,price,id,img,city;
+    private String ownerid,age,type,price,id,img,city,color;
     public Pet() {}
     public Pet(Pet p) {
         this.age=p.age;
@@ -11,9 +11,11 @@ public class Pet {
         this.price=p.price;
         this.ownerid=p.ownerid;
         this.img=p.img;
+        this.color=p.color;
+
 
     }
-    public Pet(String ownerid, String age, String type, String price, String id, String img,String c) {
+    public Pet(String ownerid, String age, String type, String price, String id, String img,String c,String color) {
         this.ownerid = ownerid;
         this.age = age;
         this.type = type;
@@ -21,6 +23,15 @@ public class Pet {
         this.id = id;
         this.img=img;
         this.city=c;
+        this.color=color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getCity() {

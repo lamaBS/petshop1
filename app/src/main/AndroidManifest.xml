@@ -25,6 +25,8 @@
         <activity
             android:name=".addpet"
             android:label="اضافة حيوان" />
+        <activity
+            android:name=".viewPets" />
     </application>
 
 </manifest>
