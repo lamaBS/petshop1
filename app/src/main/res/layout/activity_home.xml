@@ -8,6 +8,8 @@
         android:paddingLeft="18dp"
         tools:context=".home">
         <!-- F5CB5C #FCE196  #ED6B69 FCE196-->
+
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -18,13 +20,13 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="207dp"
-                    android:layout_height="109dp"
+                    android:layout_width="202dp"
+                    android:layout_height="101dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="48dp"
                     android:layout_marginBottom="10dp"
                     android:padding="16dp"
-                    android:src="@drawable/common_full_open_on_phone" />
+                    android:src="@drawable/petshop" />
 
                 <EditText
                     android:id="@+id/CustomerEmail"
@@ -67,7 +69,7 @@
                     android:id="@+id/CustomerBtnLogin"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="49dp"
                     android:layout_marginTop="24dp"
                     android:background="#ff4444"
                     android:clickable="true"
@@ -78,10 +80,10 @@
                     android:textColor="#242423" />
 
                 <Button
-                    android:id="@+id/L"
+                    android:id="@+id/buyer"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:background="#ff4444"
                     android:clickable="true"
@@ -89,7 +91,18 @@
                     android:padding="16dp"
                     android:text="انا مشتري"
                     android:textAllCaps="false" />
-
+                <Button
+                    android:id="@+id/admin"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#ff4444"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:text="انا مدير"
+                    android:textAllCaps="false" />
                 <TextView
                     android:id="@+id/CustomerSignup"
                     android:layout_width="match_parent"
@@ -102,7 +115,10 @@
                     android:onClick="regester"
                     android:textColor="#ffff"
                     android:background="@color/colorPrimaryDark"/>
+
+
             </LinearLayout>
+
         </ScrollView>
 
     </LinearLayout>

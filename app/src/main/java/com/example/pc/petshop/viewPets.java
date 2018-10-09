@@ -56,10 +56,10 @@ public class viewPets extends AppCompatActivity {
             listViewArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                    Pet artist = artists.get(position);
+               //     Pet artist = artists.get(position);
                     //   String
-                    AlertDialog diaBox = AskOption(artist.getId());
-                    diaBox.show();
+              //      AlertDialog diaBox = AskOption(artist.getId());
+               //     diaBox.show();
                 }
             });
             listViewArtists.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -77,24 +77,27 @@ public class viewPets extends AppCompatActivity {
 
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
             LayoutInflater inflater = getLayoutInflater();
-            final View dialogView = inflater.inflate(R.layout.addpet, null);
+            final View dialogView = inflater.inflate(R.layout.updatepet, null);
             dialogBuilder.setView(dialogView);
 
             final EditText editTextName = (EditText) dialogView.findViewById(R.id.type);
-            final EditText editTextdes = (EditText) dialogView.findViewById(R.id.city);
+         //   final EditText editTextdes = (EditText) dialogView.findViewById(R.id.city);
             final EditText editTextprice = (EditText) dialogView.findViewById(R.id.price);
             final EditText editTextage = (EditText) dialogView.findViewById(R.id.age);
             final EditText editTextcity=(EditText)  dialogView.findViewById(R.id.city);
             final EditText editTextcolor=(EditText)  dialogView.findViewById(R.id.color);
+            //
             editTextName.setText(type);
-            editTextdes.setText(city);
+          //  editTextdes.setText(city);
             editTextprice.setText(price);
             editTextage.setText(age);
             editTextcity.setText(city);
             editTextcolor.setText(color);
+            //
             final Button buttonimage = (Button) dialogView.findViewById(R.id.Pimage);
             final Button buttonUpdate = (Button) dialogView.findViewById(R.id.addbutton);
-
+            final Button buttndelete = (Button) dialogView.findViewById(R.id.delete);
+            //
             dialogBuilder.setTitle("تعديل معلومات الحيوان");
             final AlertDialog b = dialogBuilder.create();
             b.show();
@@ -103,14 +106,14 @@ public class viewPets extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String name = editTextName.getText().toString().trim();
-                    String des = editTextdes.getText().toString().trim();
+                  //  String des = editTextdes.getText().toString().trim();
                     String price = editTextprice.getText().toString().trim();
                     String agee= editTextage.getText().toString().trim();
                     String city= editTextcity.getText().toString().trim();
                     String color= editTextcity.getText().toString().trim();
 
-                    if (!TextUtils.isEmpty(name)&& !TextUtils.isEmpty(des) && !TextUtils.isEmpty(price) && !TextUtils.isEmpty(agee) && !TextUtils.isEmpty(city)&& !TextUtils.isEmpty(color)) {
-                        updateItem(type,id,name,des,price,city);
+                    if (!TextUtils.isEmpty(name)&& !TextUtils.isEmpty(price) && !TextUtils.isEmpty(agee) && !TextUtils.isEmpty(city)&& !TextUtils.isEmpty(color)) {
+                        updateItem(type,id,name,price,city,agee);
                         b.dismiss();
                     }
                     else{
@@ -120,10 +123,17 @@ public class viewPets extends AppCompatActivity {
                     }
                 }
             });
+            buttndelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog diaBox = AskOption(id);
+                    diaBox.show();
+                }
 
+            });
         }
 
-        private void updateItem(final String cid,final String tid,final String n,final String d,final String price,final String city) {
+        private void updateItem(final String cid,final String tid,final String n,final String price,final String city,final String agee) {
 
             final double pr;
             try{
@@ -135,9 +145,8 @@ public class viewPets extends AppCompatActivity {
             FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
             String id = user.getUid();//customer id is the same as rating id to make it easy to refer
                     Pet t=new Pet();
-                    t.setAge(cid);
-                    t.setType(d);
-                    t.setCity(n);
+                    t.setAge(agee);
+                    t.setType(cid);
                     t.setImg("here url");
                     t.setPrice(pr+"");
                     t.setCity(city);

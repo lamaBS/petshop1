@@ -34,6 +34,7 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
     TextView username;
     TextView mail;
     TextView phone;
+    TextView city1;
     TextView wwh;
     Switch allow;
     Switch available;
@@ -75,8 +76,8 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
                 mail.setText(" " + email);
                 phone = (TextView) findViewById(R.id.phone);
                 phone.setText(" " + phonnum + " ");
-                phone = (TextView) findViewById(R.id.city);
-                phone.setText(" " + city + " ");
+                city1 = (TextView) findViewById(R.id.city);
+                city1.setText(" " + city + " ");
             }
             @Override
             public void onCancelled(DatabaseError error) {
