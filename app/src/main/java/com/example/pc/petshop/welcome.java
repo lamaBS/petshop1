@@ -48,7 +48,7 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.welcome);
      Toolbar toolbar = findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
-
+        mAuth = FirebaseAuth.getInstance();
        //
 
 
@@ -85,17 +85,6 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
                 Toast.makeText(welcome.this, "لايوجد اتصال بالانترنت", Toast.LENGTH_LONG).show();
             }
         });
-
-
-
-
-
-
-
-
-
-
-
 
        //
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -140,25 +129,15 @@ public void showtext(){
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            Intent intent = new Intent(welcome.this, addpet.class);
+            Intent intent = new Intent(welcome.this, updateProfile.class);
             startActivity(intent);
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
             return true;
 
-        } else if (id == R.id.nav_preorder) {
-            /*Intent intent = new Intent(MainActivity.this, postActivity.class);
-            Bundle b=new Bundle();
-            b.putString("id",user);
-            intent.putExtras(b);
-            startActivity(intent);
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
-            */
         }
         else if (id == R.id.chat) {
-            Intent intent = new Intent(welcome.this, addpet.class);
+            Intent intent = new Intent(welcome.this, welcome.class);
             startActivity(intent);
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -166,8 +145,8 @@ public void showtext(){
             return true;
 
         }
-        else if (id == R.id.nav_request) {
-            Intent intent = new Intent(welcome.this, addpet.class);
+        else if (id == R.id.nav_preorder) {
+            Intent intent = new Intent(welcome.this, addsupplies.class);
             startActivity(intent);
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
@@ -188,7 +167,7 @@ public void showtext(){
     }
 
     public void viewsupllies(View view) {
-        Intent intent = new Intent(welcome.this, viewPets.class);
+        Intent intent = new Intent(welcome.this, viewsupllies.class);
         startActivity(intent);
 
     }

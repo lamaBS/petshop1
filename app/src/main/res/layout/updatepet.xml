@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="18dp"
     android:paddingRight="18dp"
-    android:background="#135674"
-    tools:context=".addpet">
+    android:background="@color/colorPrimaryDark"
+    tools:context=".updateProfile">
     <!-- F5CB5C #FCE196  #ED6B69 FCE196-->
     <ScrollView
         android:layout_width="match_parent"
@@ -132,6 +132,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="16dp"
+                    android:background="#ff4444"
                     android:text="اختر صورة الحيوان"
                     android:textAllCaps="false" />
 
@@ -172,7 +173,7 @@
                 android:layout_marginTop="16dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="addpet"
+                android:background="#ff4444"
                 android:padding="16dp"
                 android:text="حفظ"
                 android:textAllCaps="false" />
@@ -187,6 +188,7 @@
                 android:focusable="true"
                 android:padding="16dp"
                 android:text="حذف"
+                android:background="#ff4444"
                 android:textAllCaps="false" />
             </LinearLayout>
         </LinearLayout>

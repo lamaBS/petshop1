@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:background="#1111"
     android:orientation="vertical"
-    tools:context=".welcome"
-    >
+    tools:context=".buyerhome">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -22,7 +21,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp">
+        android:layout_height="170dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -31,6 +30,14 @@
             android:background="@color/colorPrimaryDark"
             android:orientation="vertical">
 
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="34dp"
+                android:layout_height="31dp"
+                android:background="@drawable/logout"
+                android:layout_marginLeft="4dp"
+                android:onClick="logout" />
 
             <ImageView
                 android:id="@+id/mg"
@@ -46,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="اسم البائع"
+                android:text="اسم المشتري"
                 android:textColor="#fff"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -61,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:orientation="horizontal"
+
         android:paddingLeft="25dp">
 
 
@@ -127,38 +135,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/pet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff4444"
-            android:onClick="viewpets"
-            android:text="الحيوانات المعروضة للبيع" />
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/suplies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff4444"
-            android:text="المستــلزمـــات"
-            android:onClick="viewsupllies"/>
-
-
-    </LinearLayout>
 
 
 </LinearLayout>

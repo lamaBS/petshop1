@@ -26,7 +26,7 @@
 
         android:layout_below="@+id/foodmenu"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/logo2"
+        android:background="@drawable/add"
         android:gravity="center_vertical|center_horizontal|center"
         android:onClick="addpet" />
 

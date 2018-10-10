@@ -1,14 +1,14 @@
 package com.example.pc.petshop;
 
-public class Seller  {
+public class Buyer  {
     private  String    CPassword , CEmail ,CFirstName, CLastName , uid,city;
     private  int CPoneNoumber ;
     private double XCLication;
     private double YCLocation;
 
-    public Seller(){}
+    public Buyer(){}
 
-    public Seller (  String CPassword ,String  CEmail , String CFirstName,String  CLastName ,int CPoneNoumber  , String uid,String city){
+    public Buyer (  String CPassword ,String  CEmail , String CFirstName,String  CLastName ,int CPoneNoumber  , String uid,String city){
         this.setCEmail( CEmail);
 
         this.setCFirstName( CFirstName);

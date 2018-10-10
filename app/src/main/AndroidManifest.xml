@@ -27,15 +27,16 @@
             android:label="اضافة حيوان" />
         <activity
             android:name=".viewPets" />
-         <activity
-        android:name=".addsupplies"
-        android:label="اضافة مستلزم" />
         <activity
-            android:name=".updateProfile"
-            android:label="تعديل المعلومات الشخصية" />
+            android:name=".buyerhome" />
         <activity
-            android:name=".viewPets" />
-        
+            android:name=".adminhomepage" />
+        <activity
+            android:name=".viewsupllies" />
+        <activity
+            android:name=".addsupplies" />
+        <activity
+            android:name=".updateProfile" />
     </application>
 
 </manifest>

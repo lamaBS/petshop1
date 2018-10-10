@@ -43,13 +43,13 @@
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_width="98dp"
+            android:layout_height="92dp"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="12dp"
+            android:layout_alignParentLeft="true"
             android:layout_marginStart="12dp"
-            card_view:srcCompat="@mipmap/ic_launcher_round" />
+            android:layout_marginLeft="12dp"
+            card_view:srcCompat="@drawable/logo" />
 
 
     </RelativeLayout>

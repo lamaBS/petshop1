@@ -110,10 +110,10 @@ public class viewPets extends AppCompatActivity {
                     String price = editTextprice.getText().toString().trim();
                     String agee= editTextage.getText().toString().trim();
                     String city= editTextcity.getText().toString().trim();
-                    String color= editTextcity.getText().toString().trim();
+                    String color= editTextcolor.getText().toString().trim();
 
                     if (!TextUtils.isEmpty(name)&& !TextUtils.isEmpty(price) && !TextUtils.isEmpty(agee) && !TextUtils.isEmpty(city)&& !TextUtils.isEmpty(color)) {
-                        updateItem(type,id,name,price,city,agee);
+                        updateItem(color,id,name,price,city,agee);
                         b.dismiss();
                     }
                     else{
@@ -133,7 +133,7 @@ public class viewPets extends AppCompatActivity {
             });
         }
 
-        private void updateItem(final String cid,final String tid,final String n,final String price,final String city,final String agee) {
+        private void updateItem(final String colo,final String tid,final String typ,final String price,final String city,final String agee) {
 
             final double pr;
             try{
@@ -146,10 +146,11 @@ public class viewPets extends AppCompatActivity {
             String id = user.getUid();//customer id is the same as rating id to make it easy to refer
                     Pet t=new Pet();
                     t.setAge(agee);
-                    t.setType(cid);
+                    t.setType(typ);
                     t.setImg("here url");
                     t.setPrice(pr+"");
                     t.setCity(city);
+                    t.setColor(colo);
                     myRef.child("Pet").child(tid).setValue(t); }
 
         public void addpet(View view) {

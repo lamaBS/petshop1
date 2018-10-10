@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
         android:fitsSystemWindows="true"
-        app:itemIconTint="#ADD8E6"
+        app:itemIconTint="#ff4444"
         app:menu="@menu/activity_main_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
