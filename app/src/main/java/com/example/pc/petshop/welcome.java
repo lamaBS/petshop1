@@ -37,6 +37,7 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
     TextView city1;
     TextView wwh;
     Switch allow;
+    int phonnum=0;
     Switch available;
     FirebaseAuth firebaseAuth;
     private TextView location;
@@ -66,7 +67,7 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
 
                 String name = dataSnapshot.child(user1).child("cfirstName").getValue(String.class);
                 String last = dataSnapshot.child(user1).child("clastName").getValue(String.class);
-                int phonnum = dataSnapshot.child(user1).child("cponeNoumber").getValue(int.class);
+                phonnum = dataSnapshot.child(user1).child("cponeNoumber").getValue(int.class);
                 String email = dataSnapshot.child(user1).child("cemail").getValue(String.class);
                 String city = dataSnapshot.child(user1).child("city").getValue(String.class);
 
@@ -138,6 +139,14 @@ public void showtext(){
         }
         else if (id == R.id.chat) {
             Intent intent = new Intent(welcome.this, welcome.class);
+            startActivity(intent);
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+
+        } else if (id == R.id.nav_request) {
+            Intent intent = new Intent(welcome.this, addpet.class);
             startActivity(intent);
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -12,6 +12,7 @@ public class Pet {
         this.ownerid=p.ownerid;
         this.img=p.img;
         this.color=p.color;
+        this.city=p.city;
 
 
     }

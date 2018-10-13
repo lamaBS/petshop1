@@ -91,14 +91,13 @@
                 <Button
                     android:id="@+id/Pimage"
                     style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="145dp"
-                    android:layout_height="52dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/uplode"
                     android:clickable="true"
-                    android:background="#ff4444"
                     android:focusable="true"
                     android:padding="16dp"
-                    android:text="اختر صورة المستلزم "
                     android:textAllCaps="false" />
 
                 <TextView
@@ -140,7 +139,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="addsupplies"
-                android:background="#ff4444"
+                android:background="#008000"
                 android:padding="16dp"
                 android:text="إضافة مستلزم للبيع"
                 android:textAllCaps="false" />

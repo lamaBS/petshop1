@@ -151,7 +151,7 @@
                     android:onClick="chickInfo"
                     android:padding="16dp"
                     android:text="تحديث الملف الشخصي"
-                    android:background="#ff4444"
+                    android:background="#008000"
                     android:textAllCaps="false" />
 
             </LinearLayout>

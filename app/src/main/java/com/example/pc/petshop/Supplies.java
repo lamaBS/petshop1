@@ -10,6 +10,7 @@ public class Supplies {
         this.price=p.price;
         this.ownerid=p.ownerid;
         this.img=p.img;
+        this.city=p.city;
 
 
     }

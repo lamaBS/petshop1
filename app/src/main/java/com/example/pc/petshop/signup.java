@@ -88,7 +88,7 @@ public class signup extends AppCompatActivity {
         int id = rb.getCheckedRadioButtonId();
         RadioButton r = (RadioButton) findViewById(id);
         String tp = r.getText().toString();
-        Toast.makeText(signup.this, tp, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(signup.this, tp, Toast.LENGTH_SHORT).show();
         if (tp.equals("seller")) {
             if (!TextUtils.isEmpty(emailc) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(phoneN) && !TextUtils.isEmpty(fname) && !TextUtils.isEmpty(lname)) {
                 if (pass.matches("^(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,10}$")) {

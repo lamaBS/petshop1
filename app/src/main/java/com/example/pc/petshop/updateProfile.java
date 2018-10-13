@@ -34,7 +34,9 @@ public class updateProfile extends AppCompatActivity {
     EditText fname;
     EditText lname;
     EditText mail;
-    EditText phone;
+    EditText phone,c;
+    int phonum=0;
+    String email1="";
     EditText passwor;
     FirebaseAuth firebaseAuth;
     Context context;
@@ -44,7 +46,6 @@ public class updateProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         context = this;
-        // finish();
         Intent intent;
 
 
@@ -59,22 +60,24 @@ public class updateProfile extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String fnameP = dataSnapshot.child("cfirstName").getValue(String.class);
                 String lnameP = dataSnapshot.child("clastName").getValue(String.class);
-                int phonum = dataSnapshot.child("cponeNoumber").getValue(int.class);
-                String email = dataSnapshot.child("cemail").getValue(String.class);
+                phonum = dataSnapshot.child("cponeNoumber").getValue(int.class);
+                email1 = dataSnapshot.child("cemail").getValue(String.class);
+                String city = dataSnapshot.child("city").getValue(String.class);
 
-                //String password = dataSnapshot.child("password").getValue(String.class);
+
                 fname = (EditText) findViewById(R.id.fnameP);
                 fname.setText(fnameP);
 
                 lname = (EditText) findViewById(R.id.lnamP);
                 lname.setText(lnameP);
 
-                mail = (EditText) findViewById(R.id.email);
-                //   mail.setText(email);
+                mail = (EditText) findViewById(R.id.emailP);
+                  mail.setText(""+email1);
 
-                phone = (EditText) findViewById(R.id.phone);
-                //   phone.setText("" + phonum);
-
+                phone = (EditText) findViewById(R.id.phoneP);
+                 phone.setText("" + phonum);
+                c = (EditText) findViewById(R.id.cityP);
+                c.setText("" + city);
 
             }
 
@@ -82,7 +85,7 @@ public class updateProfile extends AppCompatActivity {
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
 
-                Toast.makeText(updateProfile.this, "?????? ????? ?????????", Toast.LENGTH_LONG).show();
+                Toast.makeText(updateProfile.this, "الرجاء التحقق من الاتصال بالانترنت", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -97,12 +100,12 @@ public class updateProfile extends AppCompatActivity {
         final String emailpp = mail.getText().toString().trim();
         final String fnameP = fname.getText().toString().trim();
         final String lnameP = lname.getText().toString().trim();
-
+        final String cc =c.getText().toString().trim();
         // final double x = 12.321;
         //  final double y = 13.1;
         FirebaseUser seller = FirebaseAuth.getInstance().getCurrentUser();
         String idSeller = seller.getUid();//customer id is the same as rating id to make it easy to refer
-        if (!TextUtils.isEmpty(emailpp) && !TextUtils.isEmpty(phoneN) && !TextUtils.isEmpty(fnameP)&& !TextUtils.isEmpty(lnameP) ) {
+        if (!TextUtils.isEmpty(emailpp) && !TextUtils.isEmpty(phoneN) && !TextUtils.isEmpty(fnameP)&& !TextUtils.isEmpty(lnameP) && !TextUtils.isEmpty(cc)) {
             DatabaseReference owner = FirebaseDatabase.getInstance().getReference("seller").child(idSeller);
 
             //  PublicFoodTruckOwner owner = new PublicFoodTruckOwner();
@@ -110,10 +113,11 @@ public class updateProfile extends AppCompatActivity {
             owner.child("clastName").setValue(lnameP);
             owner.child("cponeNoumber").setValue(Integer.parseInt(phoneN));
             owner.child("cemail").setValue(emailpp);
+            owner.child("city").setValue(cc);
 
-            Toast.makeText(updateProfile.this, "?? ??? ????????? ?????!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(updateProfile.this, "تم حفظ التغييرات", Toast.LENGTH_SHORT).show();
         } else
-            Toast.makeText(updateProfile.this, "?????? ?????????? ?????? ?????", Toast.LENGTH_SHORT).show();
+            Toast.makeText(updateProfile.this, "الرجاء تعبئة كافة الحقول", Toast.LENGTH_SHORT).show();
 
     }
 }

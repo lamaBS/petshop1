@@ -132,8 +132,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="16dp"
-                    android:background="#ff4444"
-                    android:text="اختر صورة الحيوان"
+                    android:background="@drawable/uplode"
                     android:textAllCaps="false" />
 
                 <TextView
@@ -168,7 +167,7 @@
 
 
             <Button
-                android:background="#ff4444"
+                android:background="#008000"
                 android:id="@+id/addbutton"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="match_parent"

@@ -127,6 +127,7 @@ public class viewPets extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     AlertDialog diaBox = AskOption(id);
+                    b.dismiss();
                     diaBox.show();
                 }
 
@@ -150,6 +151,8 @@ public class viewPets extends AppCompatActivity {
                     t.setImg("here url");
                     t.setPrice(pr+"");
                     t.setCity(city);
+                    t.setId(tid);
+                    t.setOwnerid(id);
                     t.setColor(colo);
                     myRef.child("Pet").child(tid).setValue(t); }
 
@@ -197,14 +200,13 @@ public class viewPets extends AppCompatActivity {
                     //set message, title, and icon
                     .setTitle("حذف حيوان")
                     .setMessage("هل تريد حذف الحيوان")
-                    .setIcon(R.drawable.logo2)
+                    .setIcon(R.drawable.delete)
 
                     .setPositiveButton("حذف", new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
                             //your deleting code
                             deleteitem(item);
-
                             dialog.dismiss();
                         }
 

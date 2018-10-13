@@ -79,13 +79,11 @@ public class viewsupllies extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
         final EditText editTextName = (EditText) dialogView.findViewById(R.id.type);
-        //   final EditText editTextdes = (EditText) dialogView.findViewById(R.id.city);
         final EditText editTextprice = (EditText) dialogView.findViewById(R.id.price);
         final EditText editTextcity=(EditText)  dialogView.findViewById(R.id.city);
 
         //
         editTextName.setText(type);
-        //  editTextdes.setText(city);
         editTextprice.setText(price);
         editTextcity.setText(city);
         //
@@ -93,7 +91,7 @@ public class viewsupllies extends AppCompatActivity {
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.addbutton);
         final Button buttndelete = (Button) dialogView.findViewById(R.id.delete);
         //
-        dialogBuilder.setTitle("تعديل معلومات الحيوان");
+        dialogBuilder.setTitle("تعديل معلومات المستلزم");
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
@@ -101,7 +99,6 @@ public class viewsupllies extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String t = editTextName.getText().toString().trim();
-                //  String des = editTextdes.getText().toString().trim();
                 String price = editTextprice.getText().toString().trim();
                 String city= editTextcity.getText().toString().trim();
 
@@ -120,6 +117,7 @@ public class viewsupllies extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog diaBox = AskOption(id);
+                b.dismiss();
                 diaBox.show();
             }
 
@@ -142,6 +140,8 @@ public class viewsupllies extends AppCompatActivity {
         t.setImg("here url");
         t.setPrice(pr+"");
         t.setCity(city);
+        t.setId(tid);
+        t.setOwnerid(id);
         myRef.child("Supplies").child(tid).setValue(t); }
 
 
@@ -184,7 +184,7 @@ public class viewsupllies extends AppCompatActivity {
                 //set message, title, and icon
                 .setTitle("حذف مستلزم")
                 .setMessage("هل تريد حذف المستلزم")
-                .setIcon(R.drawable.logo2)
+                .setIcon(R.drawable.delete)
 
                 .setPositiveButton("حذف", new DialogInterface.OnClickListener() {
 

@@ -6,33 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".viewsupllies">
 
-
     <TextView
         android:id="@+id/foodmenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="11dp"
-        android:text=""
+        android:gravity="top"
+        android:text="قائمة المستلزمات"
         android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_alignParentLeft="true" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/category"
-        android:layout_width="51dp"
-        android:layout_height="31dp"
-        android:layout_below="@+id/foodmenu"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="-27dp"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
+        android:layout_alignStart="@+id/foodmenu"
+        android:layout_alignLeft="@+id/foodmenu"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginRight="138dp"
         android:background="@drawable/add"
         android:gravity="center_vertical|center_horizontal|center"
         android:onClick="addsupplies" />
-
     <ListView
         android:id="@+id/listViewTracks"
         android:layout_width="match_parent"

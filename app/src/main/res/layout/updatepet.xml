@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="18dp"
     android:paddingRight="18dp"
-    android:background="@color/colorPrimaryDark"
-    tools:context=".updateProfile">
+    android:background="@color/colorPrimaryDark">
     <!-- F5CB5C #FCE196  #ED6B69 FCE196-->
     <ScrollView
         android:layout_width="match_parent"
@@ -126,14 +125,13 @@
                 <Button
                     android:id="@+id/Pimage"
                     style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="145dp"
-                    android:layout_height="52dp"
+                    android:layout_width="103dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/uplode"
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="16dp"
-                    android:background="#ff4444"
-                    android:text="اختر صورة الحيوان"
                     android:textAllCaps="false" />
 
                 <TextView
@@ -164,32 +162,30 @@
                 android:orientation="horizontal"
                 android:paddingLeft="25dp">
 
-            <Button
-                android:id="@+id/addbutton"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/addbutton"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="47dp"
 
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="#ff4444"
-                android:padding="16dp"
-                android:text="حفظ"
-                android:textAllCaps="false" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/edit"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/delete"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="16dp"
-                android:text="حذف"
-                android:background="#ff4444"
-                android:textAllCaps="false" />
+                <Button
+                    android:id="@+id/delete"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/delete"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:textAllCaps="false" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
