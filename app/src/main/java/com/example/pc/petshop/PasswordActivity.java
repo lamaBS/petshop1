@@ -38,13 +38,16 @@ setContentView(R.layout.activity_password);
                 final String useremail= passwordEmail.getText().toString().trim();
                 if (useremail.equals("")) {
                     Toast.makeText(PasswordActivity.this,"Please enter your registered Email", Toast.LENGTH_SHORT).show();
+
                 }else {
                     firebaseAuth.sendPasswordResetEmail(useremail).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(PasswordActivity.this ,"Please enter reset email sent",Toast.LENGTH_SHORT).show();
-// Toast.makeText(this , "تم تسجيل الخروج بنجاح" , Toast.LENGTH_SHORT).show();
+                               Intent intent = new Intent(PasswordActivity.this, home.class);
+                                Toast.makeText(PasswordActivity.this,"Please check your inbox email", Toast.LENGTH_SHORT).show();
+                               startActivity(intent);
 
                             }
                             else {

@@ -49,6 +49,12 @@
             android:name=".sendSuggestion" />
         <activity
             android:name=".createEvent" />
+        <activity
+            android:name=".view_all_suggestion" />
+        <activity
+            android:name=".viewallEvent" />
+
+
     </application>
 
 </manifest>

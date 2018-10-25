@@ -6,6 +6,26 @@ public class event {
     private String adress;
     private String description;
 
+
+
+
+    public event() {}
+
+    public event(event p) {
+
+        this.adress=p.getAdress();
+        this.eventName=p.getEventName();
+        this.description=p.getDescription();
+
+
+
+    }
+    public event(String eventName, String adress, String description) {
+        this.eventName = eventName;
+        this.adress = adress;
+        this.description = description;
+
+    }
     public String getAdress() {
         return adress;
     }
@@ -29,25 +49,5 @@ public class event {
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-
-
-    public event() {}
-
-    public event(event p) {
-
-        this.adress=p.adress;
-        this.eventName=p.eventName;
-        this.description=p.description;
-
-
-
-    }
-    public event(String eventName, String adress, String description) {
-        this.eventName = eventName;
-        this.adress = adress;
-        this.description = description;
-
-    }
-
 
 }

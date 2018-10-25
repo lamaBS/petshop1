@@ -49,10 +49,10 @@ public class createEvent  extends AppCompatActivity {
             //get my id from firebase login id
             FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
             String user1 = user.getUid();//seller id
-            event t1= new event (c,t,cit);
+            event t1= new event (c,cit,t);
             myRef.child("Event").child(tid).setValue(t1);
             Toast.makeText(createEvent.this, "تمت اللإضافة", Toast.LENGTH_LONG).show();
-           // startActivity(new Intent(this, viewPets.class));
+            startActivity(new Intent(this, adminhomepage.class));
         }
         else
             Toast.makeText(createEvent.this, "يجب تعبئة كافه الحقول", Toast.LENGTH_LONG).show();

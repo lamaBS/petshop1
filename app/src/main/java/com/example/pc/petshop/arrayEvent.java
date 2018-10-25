@@ -30,7 +30,7 @@ public class arrayEvent extends ArrayAdapter<event>{
         View listViewItem = inflater.inflate(R.layout.event_layout, null, true);
         TextView adrss = (TextView) listViewItem.findViewById(R.id.adress);
         TextView name = (TextView) listViewItem.findViewById(R.id.name);
-        TextView des = (TextView) listViewItem.findViewById(R.id.descrp);
+        //TextView des = (TextView) listViewItem.findViewById(R.id.descrp);
         event artist = artists.get(position);
 
       // des.setText(artist.getDescription());

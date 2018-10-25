@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#1111"
     android:orientation="vertical"
-    tools:context=".buyerhome"
+    tools:context=".adminhomepage"
     >
 
     <android.support.v7.widget.Toolbar
@@ -64,24 +64,26 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/addEvent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:text="إضافة حدث" />
+            android:layout_height="wrap_content"
+            android:text="إضافة نشاط" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnViewEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ff4444"
-            android:text="إضافة خدمات" />
+            android:text="عرض النشاطات" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnSugesstion"
+            android:background="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="عرض الشكاوى والاقتراحات" />
+            android:text="عرض الاقتراحات" />
+
     </LinearLayout>
 
 </LinearLayout>

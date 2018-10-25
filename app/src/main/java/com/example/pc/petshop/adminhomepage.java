@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,8 +51,52 @@ public class adminhomepage  extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
         //
+Button b=findViewById(R.id.btnSugesstion);
+Button event = findViewById(R.id.addEvent);
+Button alleventt = findViewById(R.id.btnViewEvent);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(adminhomepage.this, view_all_suggestion.class);
+                startActivity(intent);
+            }
 
 
+            ///
+
+
+//addEvent
+        });
+
+        alleventt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(adminhomepage.this, viewallEvent.class);
+                startActivity(intent);
+            }
+
+
+            ///
+
+
+//addEvent
+        });
+        ///////////////////
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(adminhomepage.this, createEvent.class);
+                startActivity(intent);
+            }
+
+
+            ///
+
+
+//addEvent
+        });
+
+        ////////////////////////////
     }
 
     public void logout(View view) {
@@ -61,5 +106,6 @@ public class adminhomepage  extends AppCompatActivity {
             startActivity(new Intent(this, home.class));
         }
     }
+
 
 }
