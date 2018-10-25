@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/verrrrrrr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1111"
+    android:orientation="vertical"
+    tools:context=".sphome">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        app:layout_collapseMode="pin"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="34dp"
+                android:layout_height="31dp"
+                android:background="@drawable/logout"
+                android:layout_marginLeft="4dp"
+                android:onClick="logout" />
+
+            <ImageView
+                android:id="@+id/mg"
+                android:layout_width="81dp"
+                android:layout_height="63dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/person" />
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="اسم المشتري"
+                android:textColor="#fff"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:orientation="horizontal"
+
+        android:paddingLeft="25dp">
+
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="286dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingLeft="20dp"
+            android:text="المدينة"
+            android:textDirection="rtl"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+
+        <TextView
+            android:id="@+id/email"
+
+            android:layout_width="287dp"
+            android:layout_height="29dp"
+            android:layout_gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingLeft="20dp"
+            android:text="البريد الالكتروني"
+            android:textDirection="rtl"
+
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp">
+
+
+        <TextView
+            android:id="@+id/phone"
+
+            android:layout_width="287dp"
+            android:layout_height="29dp"
+            android:layout_gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingLeft="20dp"
+            android:text="رقم الهاتف"
+            android:textDirection="rtl"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

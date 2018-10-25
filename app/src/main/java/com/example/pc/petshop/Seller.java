@@ -10,15 +10,10 @@ public class Seller  {
 
     public Seller (  String CPassword ,String  CEmail , String CFirstName,String  CLastName ,int CPoneNoumber  , String uid,String city){
         this.setCEmail( CEmail);
-
         this.setCFirstName( CFirstName);
-
         this.setCLastName(CLastName);
-
         this.setCPassword(CPassword) ;
-
         this.setCPoneNoumber( CPoneNoumber) ;
-
         this.setUid (uid);
         this.setcity(city);
     }

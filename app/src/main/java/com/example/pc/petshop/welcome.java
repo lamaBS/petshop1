@@ -138,9 +138,16 @@ public void showtext(){
 
         }
         else if (id == R.id.chat) {
-            Intent intent = new Intent(welcome.this, welcome.class);
+            Intent intent = new Intent(welcome.this, postActivityPublic.class);
             startActivity(intent);
 
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+
+        }   else if (id == R.id.sugesstionmenu) {
+            Intent intent = new Intent(welcome.this, sendSuggestion.class);
+            startActivity(intent);
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
             return true;

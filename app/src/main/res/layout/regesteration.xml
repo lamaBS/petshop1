@@ -121,7 +121,7 @@
                 android:layout_height="1dp"
                 android:background="#fff" />
 
-            <EditText
+            <TextView
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,14 +129,16 @@
                 android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
-                android:hint="المدينة"
-                android:inputType="textEmailAddress"
+                android:text="المدينة"
                 android:maxLines="1"
                 android:padding="8dp"
-                android:textColorHint="#fff"
+                android:textColor="#fff"
                 android:textStyle="bold"
                 tools:targetApi="jelly_bean_mr1" />
-
+            <Spinner
+                android:id="@+id/cityspinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -166,7 +168,18 @@
                         android:layout_height="wrap_content"
                         android:text="seller"
                         android:textColor="#fff" />
+                    <RadioButton
+                        android:id="@+id/sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="serviceprovider"
+                        android:textColor="#fff" />
                 </RadioGroup>
+                <Spinner
+                    android:id="@+id/ser"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <Button

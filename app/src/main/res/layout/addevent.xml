@@ -6,7 +6,7 @@
     android:paddingLeft="18dp"
     android:paddingRight="18dp"
     android:background="@color/colorPrimaryDark"
-    tools:context=".addsupplies">
+    tools:context=".addpet">
     <!-- F5CB5C #FCE196  #ED6B69 FCE196-->
     <ScrollView
         android:layout_width="match_parent"
@@ -18,9 +18,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@android:color/transparent"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="أسم النشاط"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColorHint="#fff" />
 
-            <TextView
-                android:id="@+id/type"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff" />
+
+            <EditText
+                android:id="@+id/adress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -28,32 +46,30 @@
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:gravity="right"
-                android:text="النوع"
-                android:inputType="textLongMessage"
+                android:hint="عنوان النشاط "
+                android:inputType="textShortMessage|textLongMessage"
                 android:maxLines="1"
                 android:padding="8dp"
-                android:textColor="#fff"
+                android:textColorHint="#fff"
                 android:textStyle="bold"
                 tools:targetApi="jelly_bean_mr1" />
-            <Spinner
-                android:id="@+id/tp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#fff" />
 
             <EditText
-                android:id="@+id/price"
+                android:id="@+id/descrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
-                android:hint="السعر SR."
-                android:inputType="numberDecimal"
+                android:gravity="right"
+                android:hint="وصف النشاط "
+                android:inputType="textShortMessage|textLongMessage"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textColorHint="#fff"
@@ -66,63 +82,13 @@
                 android:layout_height="1dp"
                 android:background="#fff" />
 
-            <TextView
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/transparent"
-                android:drawablePadding="12dp"
-                android:text="المدينة"
-                android:padding="8dp"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                tools:targetApi="jelly_bean_mr1" />
 
-            <Spinner
-                android:id="@+id/cityspinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#fff" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
-                <ImageButton
-                    android:id="@+id/Pimage"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/uplode"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="imageButtonClicked"
-                    android:padding="16dp"
-                    android:textAllCaps="false" />
-
-                <TextView
-                    android:id="@+id/urlEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="12dp"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:hint="تحميل الصورة"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColorHint="#fff"
-                    android:textStyle="bold"
-                    tools:targetApi="jelly_bean_mr1" />
             </LinearLayout>
 
 
@@ -143,12 +109,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="#008000"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="addsupplies"
-                android:background="#008000"
+                android:onClick="addpet"
                 android:padding="16dp"
-                android:text="إضافة مستلزم للبيع"
+                android:text="حفظ"
                 android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>

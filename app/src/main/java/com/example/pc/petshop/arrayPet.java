@@ -21,7 +21,7 @@ public class arrayPet extends ArrayAdapter<Pet> {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = context.getLayoutInflater();
             View listViewItem = inflater.inflate(R.layout.layout_pet, null, true);
-            ImageView img = (ImageView) listViewItem.findViewById(R.id.img);
+          //  ImageView img = (ImageView) listViewItem.findViewById(R.id.img);
             TextView itemprice = (TextView) listViewItem.findViewById(R.id.price);
             TextView type = (TextView) listViewItem.findViewById(R.id.type);
             Pet artist = artists.get(position);

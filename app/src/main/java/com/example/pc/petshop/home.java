@@ -34,9 +34,11 @@ public class home extends AppCompatActivity {
     TextView rigister ;
     //EditText username ,password ;
     private FirebaseAuth mAuth;
+    private TextView forgotPassword;
+
     private EditText textEmail;
     private EditText textPass;
-    private Button btnLogin,btnLogin2,btnLogin3;
+    private Button btnLogin,btnLogin2,btnLogin3,btnLogin4;
     DatabaseReference UDB;
     private ProgressDialog progressDialog;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -54,6 +56,7 @@ public class home extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.CustomerBtnLogin);
         btnLogin2 = (Button) findViewById(R.id.buyer);
         btnLogin3 = (Button) findViewById(R.id.admin);
+        btnLogin4 = (Button) findViewById(R.id.sp);
         mAuth = FirebaseAuth.getInstance();
         FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -75,8 +78,25 @@ public class home extends AppCompatActivity {
                 doLogin3();
             }
         });
+        btnLogin4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doLogin4();
+            }
+        });
+        forgotPassword = (TextView)findViewById(R.id.tvForgotPassword);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(home.this, PasswordActivity.class ));
+            }
+        });
 
     }
+
+
+
     private void initAuthStateListener (){
 
 
@@ -288,5 +308,62 @@ public class home extends AppCompatActivity {
     public void regester(View view) {
         Intent intent = new Intent(home.this,signup.class);
         startActivity(intent);
+    }
+    private void doLogin4() {
+        final String email = textEmail.getText().toString().trim();
+        password = textPass.getText().toString().trim();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "فضلًا ادخل البريد الالكتروني", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(), "فضلًا ادخل كلمة المرور", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            progressDialog.setMessage("انتظر من فصلك, جاري تسجيل الدخول..");
+            progressDialog.show();
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
+                            if (task.isSuccessful()) {
+
+                                String id=mAuth.getCurrentUser().getUid();
+                                appUse.child(id).child("type").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        type=dataSnapshot.getValue(String.class).trim();
+
+                                        if(type.equals("sp")){
+                                            Toast.makeText(home.this, "تم تسجيل الدخول بنجاح", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(home.this,sphome.class);
+                                            startActivity(intent);}
+                                        else{
+                                            Toast.makeText(home.this, "الرجاء التأكد من نوع الدخول", Toast.LENGTH_SHORT).show();
+
+                                        } }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+///
+                                    }
+                                });
+
+                            } // Singed in successfull
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(home.this, "خطأ في ادخال البريد الالكتروني أو كلمة المرور", Toast.LENGTH_LONG).show();
+                            }
+
+
+
+                        } // On Complete
+                    }); // OnComplete listener
+
+        } // Felids not empty
+
     }
 }

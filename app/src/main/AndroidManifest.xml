@@ -36,7 +36,19 @@
         <activity
             android:name=".addsupplies" />
         <activity
+            android:name=".sphome" />
+        <activity
             android:name=".updateProfile" />
+        <activity
+            android:name=".PasswordActivity" />
+        <activity
+            android:name=".publicTab2posts" />
+        <activity
+            android:name=".postActivityPublic" />
+        <activity
+            android:name=".sendSuggestion" />
+        <activity
+            android:name=".createEvent" />
     </application>
 
 </manifest>

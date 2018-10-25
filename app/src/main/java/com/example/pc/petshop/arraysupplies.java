@@ -22,7 +22,7 @@ public class arraysupplies extends ArrayAdapter<Supplies> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.supplies_card, null, true);
-        ImageView img = (ImageView) listViewItem.findViewById(R.id.img);
+        //ImageView img = (ImageView) listViewItem.findViewById(R.id.img);
         TextView itemprice = (TextView) listViewItem.findViewById(R.id.price);
         TextView type = (TextView) listViewItem.findViewById(R.id.type);
         Supplies artist = artists.get(position);

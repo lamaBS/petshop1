@@ -3,4 +3,39 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="city">
+        <item>جده</item>
+        <item>الرياض</item>
+        <item>الدمام</item>
+        <item>مكة</item>
+        <item>ابها</item>
+    </string-array>
+
+
+    <string-array name="animaltype">
+        <item>قطـــة</item>
+        <item>كــلب</item>
+        <item>أسمــاك</item>
+        <item>قوارض</item>
+        <item>طيور</item>
+        <item>سلاحــف</item>
+    </string-array>
+    <string-array name="service">
+        <item>gooming</item>
+        <item>vet</item>
+        <item>pet hotel</item>
+    </string-array>
+    <string-array name="suptype">
+        <item>العاب</item>
+        <item>صندوق للتنقل</item>
+        <item>قفص طيور</item>
+        <item>ادوات عناية</item>
+        <item>فيتامينات</item>
+        <item>طعام قطط</item>
+        <item>طعام اسماك</item>
+        <item>طعام طيور</item>
+        <item>طعام كلاب</item>
+        <item>طعام قوارض</item>
+        <item>طعام سلاحف</item>
+    </string-array>
 </resources>
