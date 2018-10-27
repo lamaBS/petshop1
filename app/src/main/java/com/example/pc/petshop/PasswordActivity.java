@@ -37,16 +37,16 @@ setContentView(R.layout.activity_password);
             public void onClick(View v) {
                 final String useremail= passwordEmail.getText().toString().trim();
                 if (useremail.equals("")) {
-                    Toast.makeText(PasswordActivity.this,"Please enter your registered Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasswordActivity.this,"الرجاء ادخال بريد الكتروني مسجل مسبقا", Toast.LENGTH_SHORT).show();
 
                 }else {
                     firebaseAuth.sendPasswordResetEmail(useremail).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(PasswordActivity.this ,"Please enter reset email sent",Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(PasswordActivity.this ,"Please enter reset email sent",Toast.LENGTH_SHORT).show();
                                Intent intent = new Intent(PasswordActivity.this, home.class);
-                                Toast.makeText(PasswordActivity.this,"Please check your inbox email", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PasswordActivity.this,"تم الارسال,الرجاء التحقق من البريد الالكتروني", Toast.LENGTH_SHORT).show();
                                startActivity(intent);
 
                             }
@@ -55,12 +55,12 @@ setContentView(R.layout.activity_password);
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
-                                            Toast.makeText(PasswordActivity.this ,"Password reset email sent! ",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(PasswordActivity.this ,"تم إرسال البريد الإلكتروني الخاص بإعادة ضبط كلمة المرور ",Toast.LENGTH_SHORT).show();
                                             finish();
                                             startActivity(new Intent(PasswordActivity.this , welcome.class));
 
                                         }else {
-                                            Toast.makeText(PasswordActivity.this ,"Error in sending password reset E-mail! ",Toast.LENGTH_LONG).show();
+                                            Toast.makeText(PasswordActivity.this ,"خطأ في إرسال إعادة تعيين كلمة المرور البريد الإلكتروني! ",Toast.LENGTH_LONG).show();
 
                                         }
                                     }

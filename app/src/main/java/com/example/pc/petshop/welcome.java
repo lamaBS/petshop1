@@ -138,7 +138,7 @@ public void showtext(){
 
         }
         else if (id == R.id.chat) {
-            Intent intent = new Intent(welcome.this, postActivityPublic.class);
+            Intent intent = new Intent(welcome.this, publicTab2posts.class);
             startActivity(intent);
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

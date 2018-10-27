@@ -180,8 +180,8 @@ public class addpet  extends AppCompatActivity implements AdapterView.OnItemSele
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uri = data.getData();
-            imageButton = (ImageButton) findViewById(R.id.Pimage);
-            imageButton.setImageURI(uri);
+          //  imageButton = (ImageButton) findViewById(R.id.Pimage);
+          //  imageButton.setImageURI(uri);
             /*try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 // imageView.setImageBitmap(bitmap);

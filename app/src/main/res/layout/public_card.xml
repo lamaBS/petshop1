@@ -18,9 +18,10 @@
             android:id="@+id/userName"/>
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/post_image"/>
+            android:id="@+id/post_image"
+            android:layout_width="138dp"
+            android:layout_height="99dp"
+            android:layout_gravity="center_vertical|center_horizontal" />
 
         <TextView
             android:layout_width="match_parent"
