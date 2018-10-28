@@ -151,8 +151,16 @@ public void showtext(){
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
             return true;
-
-        } else if (id == R.id.nav_request) {
+        }
+        else if (id == R.id.newPasswordd) {
+            Intent intent = new Intent(welcome.this, PasswordActivity.class);
+            startActivity(intent);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+// newPasswordd
+        }
+        else if (id == R.id.nav_request) {
             Intent intent = new Intent(welcome.this, addpet.class);
             startActivity(intent);
 

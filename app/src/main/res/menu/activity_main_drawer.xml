@@ -28,6 +28,11 @@
             android:icon="@drawable/person"
             android:title="التواصل مع العملاء" />
     </group>
+    <group android:checkableBehavior="single" android:visible="true" android:id="@+id/newPassword">
+        <item android:id="@+id/newPasswordd"
+            android:icon="@drawable/logout"
+            android:title=" إعادة تعيين كلمة مرور جديدة" />
+    </group>
     <group android:checkableBehavior="single" android:visible="true" android:id="@+id/icon_group">
         <item android:id="@+id/nav_logout"
             android:icon="@drawable/logout"

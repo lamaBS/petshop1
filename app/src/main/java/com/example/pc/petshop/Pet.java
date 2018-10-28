@@ -2,7 +2,7 @@ package com.example.pc.petshop;
 
 public class Pet {
 
-    private String ownerid,age,type,price,id,img,city,color;
+    private String ownerid,age,type,price,id,img,city,color,username;
     public Pet() {}
     public Pet(Pet p) {
         this.age=p.age;
@@ -52,6 +52,14 @@ public class Pet {
     }
     public String getOwnerid() {
         return ownerid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setOwnerid(String ownerid) {

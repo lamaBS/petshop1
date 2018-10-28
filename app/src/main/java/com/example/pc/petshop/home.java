@@ -221,7 +221,7 @@ public class home extends AppCompatActivity {
 
                                         if(type.equals("buyer")){
                                             Toast.makeText(home.this, "تم تسجيل الدخول بنجاح", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(home.this,buyerhome.class);
+                                            Intent intent = new Intent(home.this,publicTab2posts.class);
                                             startActivity(intent);}
                                         else{
                                             Toast.makeText(home.this, "الرجاء التأكد من نوع الدخول", Toast.LENGTH_SHORT).show();

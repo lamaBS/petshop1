@@ -103,8 +103,9 @@ public class addpet  extends AppCompatActivity implements AdapterView.OnItemSele
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    final Task<Uri> downloadurl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                   final Task<Uri> downloadurl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                     //    final Uri downloadurl=taskSnapshot.getDownloadUrl();
+                  //  final Uri downloadurl=taskSnapshot.getDownloadUrl();
                     Toast.makeText(addpet.this, "Upload completed", Toast.LENGTH_LONG).show();
                     final DatabaseReference newPost= databaseReference.push();
                   final  String tid =myRef.push().getKey();
@@ -117,7 +118,7 @@ public class addpet  extends AppCompatActivity implements AdapterView.OnItemSele
                             myRef.child("Pet").child(tid).setValue(t1);
                             //
                             Toast.makeText(addpet.this, "تم اضافة الحيوان", Toast.LENGTH_LONG).show();
-                            newPost.child("username").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            myRef.child("Pet").child(tid).child("username").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){

@@ -47,27 +47,28 @@ public class publicTab2posts extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         String currentUID= mAuth.getCurrentUser().getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("postsTest6");
-        mQueryCurrentOwner = databaseReference.orderByChild("uid").equalTo(currentUID);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Pet");
+      //  mQueryCurrentOwner = databaseReference;
+                //.orderByChild("uid").equalTo(currentUID);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<Post,PostHolder> FBRA =new FirebaseRecyclerAdapter<Post, PostHolder>(
-                Post.class,
+        FirebaseRecyclerAdapter<Pet,PostHolder> FBRA =new FirebaseRecyclerAdapter<Pet, PostHolder>(
+                Pet.class,
                 R.layout.public_card,
                 PostHolder.class,
-                mQueryCurrentOwner
+                databaseReference
 
         ) {
             @Override
-            protected void populateViewHolder(PostHolder viewHolder, Post model, int position) {
+            protected void populateViewHolder(PostHolder viewHolder, Pet model, int position) {
                 final String postID=getRef(position).getKey();
-                viewHolder.setName(model.getName());
-                viewHolder.setDesc(model.getDesc());
+                viewHolder.setName(model.getPrice());
+                viewHolder.setDesc(model.getCity());
                 viewHolder.setUserName(model.getUsername());
-                viewHolder.setImage(publicTab2posts.this, model.getImage());
+                viewHolder.setImage(publicTab2posts.this, model.getImg());
 
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
