@@ -62,6 +62,14 @@
 
         <activity
             android:name=".buysupplies" />
+        <activity
+            android:name=".chatting" />
+        <activity
+            android:name=".ownerchatlist" />
+        <activity
+            android:name=".buyerchatlist" />
+        <activity
+            android:name=".viewHotel" />
     </application>
 
 </manifest>

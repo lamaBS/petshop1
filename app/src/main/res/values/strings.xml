@@ -10,7 +10,12 @@
         <item>مكة</item>
         <item>ابها</item>
     </string-array>
-
+    <string-array name="user">
+        <item>بائع</item>
+        <item>مشتري</item>
+        <item>مزود خدمة</item>
+        <item>مدير</item>
+    </string-array>
 
     <string-array name="animaltype">
         <item>قطـــة</item>

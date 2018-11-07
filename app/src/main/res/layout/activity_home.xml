@@ -20,14 +20,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="202dp"
-                    android:layout_height="101dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="16dp"
-                    android:src="@drawable/petshop" />
 
                 <EditText
                     android:id="@+id/CustomerEmail"
@@ -70,67 +62,42 @@
 
                 <TextView
                     android:id="@+id/tvForgotPassword"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="نسيت كلمة المرور "
                     android:textAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
-                <Button
-                    android:id="@+id/CustomerBtnLogin"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                <Spinner
+                    android:id="@+id/userr"
                     android:layout_width="match_parent"
-                    android:layout_height="49dp"
-                    android:layout_marginTop="24dp"
-                    android:background="#ff4444"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="16dp"
-                    android:text="انا بائع"
-                    android:textAllCaps="false"
-                    android:textColor="#242423" />
+                    android:visibility="visible"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fff" />
 
-                <Button
-                    android:id="@+id/buyer"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fff" />
+
+                <TextView
+                    android:id="@+id/login"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
-                    android:background="#ff4444"
+                    android:background="@color/colorAccent"
                     android:clickable="true"
                     android:focusable="true"
-                    android:padding="16dp"
-                    android:text="انا مشتري"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/admin"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#ff4444"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="16dp"
-                    android:text="انا مدير"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/sp"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#ff4444"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="16dp"
-                    android:text="انا مزود خدمة"
-                    android:textAllCaps="false" />
+                    android:gravity="center"
+                    android:onClick="LOG"
+                    android:text="تسجيل الدخول"
+                    android:textColor="#ffff" />
                 <TextView
                     android:id="@+id/CustomerSignup"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimaryDark"
                     android:clickable="true"

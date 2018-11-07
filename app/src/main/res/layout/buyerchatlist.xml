@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="109dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cardview_dark_background"
+        android:gravity="bottom"
+        android:orientation="vertical"
+
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp">
+        <TextView
+            android:id="@+id/foodmenu"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:gravity="top"
+            android:text="الرسائـــل المستلـمة"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+    </LinearLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <ListView
+            android:id="@+id/listViewTracks"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="116dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"></ListView>
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

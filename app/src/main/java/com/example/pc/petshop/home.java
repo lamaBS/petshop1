@@ -10,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class home extends AppCompatActivity {
+public class home extends AppCompatActivity  implements AdapterView.OnItemSelectedListener{
    // private FirebaseAuth mAuth;
    private FirebaseDatabase db = FirebaseDatabase.getInstance();
     private DatabaseReference appUse=db.getReference("type");
@@ -35,7 +38,7 @@ public class home extends AppCompatActivity {
     //EditText username ,password ;
     private FirebaseAuth mAuth;
     private TextView forgotPassword;
-
+static String serv;
     private EditText textEmail;
     private EditText textPass;
     private Button btnLogin,btnLogin2,btnLogin3,btnLogin4;
@@ -53,13 +56,10 @@ public class home extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         textEmail = (EditText) findViewById(R.id.CustomerEmail);
         textPass = (EditText) findViewById(R.id.CustomerPassword);
-        btnLogin = (Button) findViewById(R.id.CustomerBtnLogin);
-        btnLogin2 = (Button) findViewById(R.id.buyer);
-        btnLogin3 = (Button) findViewById(R.id.admin);
-        btnLogin4 = (Button) findViewById(R.id.sp);
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseAuth.AuthStateListener mAuthListener;
-
+/*
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +84,12 @@ public class home extends AppCompatActivity {
                 doLogin4();
             }
         });
+        */
+        Spinner spinner=findViewById(R.id.userr);
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.user,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
         forgotPassword = (TextView)findViewById(R.id.tvForgotPassword);
 
         forgotPassword.setOnClickListener(new View.OnClickListener() {
@@ -364,6 +370,30 @@ public class home extends AppCompatActivity {
                     }); // OnComplete listener
 
         } // Felids not empty
+
+    }
+
+    public void LOG(View view) {
+
+        if(serv.equals("بائع"))
+            doLogin();
+            else
+        if(serv.equals("مشتري"))
+            doLogin2();
+                else
+        if(serv.equals("مدير"))
+            doLogin3();
+         else
+        if(serv.equals("مزود خدمة"))
+            doLogin4();
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        serv =parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
