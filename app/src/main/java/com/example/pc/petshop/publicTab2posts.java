@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,6 +66,7 @@ public class publicTab2posts extends AppCompatActivity {
             @Override
             protected void populateViewHolder(PostHolder viewHolder, Pet model, int position) {
                 final String postID=getRef(position).getKey();
+               // Toast.makeText(publicTab2posts.this, "id="+postID+" ", Toast.LENGTH_LONG).show();
                 viewHolder.setName(model.getPrice());
                 viewHolder.setDesc(model.getCity());
                 viewHolder.setUserName(model.getUsername());
@@ -73,9 +75,10 @@ public class publicTab2posts extends AppCompatActivity {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent =new Intent(publicTab2posts.this,welcome.class);
-                        intent.putExtra("post_id",postID);
-                        startActivity(intent);
+                       // Toast.makeText(publicTab2posts.this, "id="+postID+" ", Toast.LENGTH_LONG).show();
+                     Intent intent =new Intent(publicTab2posts.this,SinglePostView.class);
+                     intent.putExtra("post_id",postID);
+                     startActivity(intent);
                     }
                 });
 
@@ -94,7 +97,7 @@ public class publicTab2posts extends AppCompatActivity {
 
         public void setName(String name){
             TextView postName= (TextView) itemView.findViewById(R.id.imageTitle);
-            postName.setText(name);
+            postName.setText(name+".SR");
         }
 
         public void setDesc(String desc){

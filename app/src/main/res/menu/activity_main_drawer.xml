@@ -30,7 +30,7 @@
     </group>
     <group android:checkableBehavior="single" android:visible="true" android:id="@+id/newPassword">
         <item android:id="@+id/newPasswordd"
-            android:icon="@drawable/logout"
+            android:icon="@drawable/person"
             android:title=" إعادة تعيين كلمة مرور جديدة" />
     </group>
     <group android:checkableBehavior="single" android:visible="true" android:id="@+id/icon_group">

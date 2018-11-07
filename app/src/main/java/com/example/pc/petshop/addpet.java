@@ -87,7 +87,7 @@ public class addpet  extends AppCompatActivity implements AdapterView.OnItemSele
     //
         buttonUpload = (ImageButton) findViewById(R.id.Pimage);
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = database.getInstance().getReference().child("Pet");
+        //databaseReference = database.getInstance().getReference().child("Pet");
         mAuth= FirebaseAuth.getInstance();
         CurrentOwner=mAuth.getCurrentUser();
 
@@ -107,7 +107,7 @@ public class addpet  extends AppCompatActivity implements AdapterView.OnItemSele
                     //    final Uri downloadurl=taskSnapshot.getDownloadUrl();
                   //  final Uri downloadurl=taskSnapshot.getDownloadUrl();
                     Toast.makeText(addpet.this, "Upload completed", Toast.LENGTH_LONG).show();
-                    final DatabaseReference newPost= databaseReference.push();
+                   // final DatabaseReference newPost= databaseReference.push();
                   final  String tid =myRef.push().getKey();
                     databaseOWner.addValueEventListener(new ValueEventListener() {
                         @Override

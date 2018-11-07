@@ -40,6 +40,8 @@
         <activity
             android:name=".updateProfile" />
         <activity
+            android:name=".paymentmethod" />
+        <activity
             android:name=".PasswordActivity" />
         <activity
             android:name=".publicTab2posts" />
@@ -49,12 +51,17 @@
             android:name=".sendSuggestion" />
         <activity
             android:name=".createEvent" />
+        <activity android:name=".SinglePostView2"/>
+
         <activity
             android:name=".view_all_suggestion" />
         <activity
+            android:name=".SinglePostView" />
+        <activity
             android:name=".viewallEvent" />
 
-
+        <activity
+            android:name=".buysupplies" />
     </application>
 
 </manifest>

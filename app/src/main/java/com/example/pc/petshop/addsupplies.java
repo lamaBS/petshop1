@@ -71,7 +71,7 @@ public class addsupplies  extends AppCompatActivity implements AdapterView.OnIte
     public void addsupplies(View view) {
         buttonUpload = (ImageButton) findViewById(R.id.Pimage);
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = database.getInstance().getReference().child("Supplies");
+      //  databaseReference = database.getInstance().getReference().child("Supplies");
         mAuth= FirebaseAuth.getInstance();
         CurrentOwner=mAuth.getCurrentUser();
 
@@ -88,7 +88,7 @@ public class addsupplies  extends AppCompatActivity implements AdapterView.OnIte
                     final Task<Uri> downloadurl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                     //    final Uri downloadurl=taskSnapshot.getDownloadUrl();
                     Toast.makeText(addsupplies.this, "Upload completed", Toast.LENGTH_LONG).show();
-                    final DatabaseReference newPost= databaseReference.push();
+                  //  final DatabaseReference newPost= databaseReference.push();
                     final  String tid =myRef.push().getKey();
                     databaseOWner.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -101,7 +101,7 @@ public class addsupplies  extends AppCompatActivity implements AdapterView.OnIte
                             Toast.makeText(addsupplies.this, "تم اضافة المستلزم", Toast.LENGTH_LONG).show();
 
                             //
-                            newPost.child("username").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            myRef.child("Supplies").child(tid).child("username").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){

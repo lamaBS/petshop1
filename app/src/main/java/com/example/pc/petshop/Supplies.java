@@ -1,7 +1,7 @@
 package com.example.pc.petshop;
 
 public class Supplies {
-    private String ownerid,name,type,price,id,img,city;
+    private String ownerid,name,type,price,id,img,city,username;
 
     public Supplies() {}
     public Supplies(Supplies p) {
@@ -24,6 +24,14 @@ public class Supplies {
     }
     public String getCity() {
         return city;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setCity(String city) {
