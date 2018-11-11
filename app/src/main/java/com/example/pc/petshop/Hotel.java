@@ -2,7 +2,7 @@ package com.example.pc.petshop;
 
 public class Hotel {
 
-    private String name , address , price , details , ID ;
+    private String name , address , price , details , ID ,email ;
     public Hotel() {}
     public Hotel(Hotel h) {
         this.name=h.name ;
@@ -10,6 +10,7 @@ public class Hotel {
         this.price=h.price ;
         this.details=h.details ;
         this.ID=h.ID ;
+        this.email=h.email;
 
     }
     public Hotel(String name, String address, String price, String details, String ID) {

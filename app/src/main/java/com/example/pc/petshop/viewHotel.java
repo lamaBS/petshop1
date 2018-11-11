@@ -80,7 +80,7 @@ public class viewHotel extends AppCompatActivity {
         // databaseReferences.orderByChild("uid").equalTo(user1);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         String user1 = user.getUid();//customer id is the same as rating id to make it easy to refer
-        myRef.child("Hotel").orderByChild("ownerid").equalTo(user1).addValueEventListener(new ValueEventListener() {
+        myRef.child("serviceprovider").orderByChild("serv").equalTo("pet hotel").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
