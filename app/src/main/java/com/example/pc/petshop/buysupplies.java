@@ -14,7 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +28,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
-public class buysupplies extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener{
+public class buysupplies extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener{
 
         private RecyclerView mPostList;
-        private DatabaseReference databaseReference;
+        static DatabaseReference databaseReference;
         private FirebaseAuth mAuth;
+    static String serv;
         private FirebaseAuth.AuthStateListener mAuthListener;
-        private Query mQueryCurrentOwner;
+       static Query mQueryCurrentOwner;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -48,8 +52,12 @@ public class buysupplies extends AppCompatActivity implements  NavigationView.On
             mAuth = FirebaseAuth.getInstance();
             String currentUID= mAuth.getCurrentUser().getUid();
             databaseReference = FirebaseDatabase.getInstance().getReference().child("Supplies");
-            //  mQueryCurrentOwner = databaseReference;
-            //.orderByChild("uid").equalTo(currentUID);
+            mQueryCurrentOwner = databaseReference;
+            Spinner spinner=findViewById(R.id.cityspinner);
+            ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.type1,android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(this);
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                     this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -69,7 +77,7 @@ public class buysupplies extends AppCompatActivity implements  NavigationView.On
                     Supplies.class,
                     R.layout.public_card,
                     com.example.pc.petshop.buysupplies.PostHolder.class,
-                    databaseReference
+                    mQueryCurrentOwner
 
             ) {
                 @Override
@@ -96,8 +104,25 @@ public class buysupplies extends AppCompatActivity implements  NavigationView.On
             mPostList.setAdapter(FBRA);
         }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        serv =parent.getItemAtPosition(position).toString();
+        if(serv.equals("الكل")){
+            mQueryCurrentOwner = FirebaseDatabase.getInstance().getReference().child("Supplies");
+            onStart();}
+        else {
+            mQueryCurrentOwner = FirebaseDatabase.getInstance().getReference().child("Supplies").orderByChild("type").equalTo(serv);
+            onStart();
+        }
+    }
 
-        public static class PostHolder extends RecyclerView.ViewHolder{
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+    public static class PostHolder extends RecyclerView.ViewHolder{
 
             public PostHolder(View itemView) {
                 super(itemView);

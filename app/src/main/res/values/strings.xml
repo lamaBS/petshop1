@@ -10,6 +10,14 @@
         <item>مكة</item>
         <item>ابها</item>
     </string-array>
+    <string-array name="cityall">
+        <item>الكل</item>
+        <item>جده</item>
+        <item>الرياض</item>
+        <item>الدمام</item>
+        <item>مكة</item>
+        <item>ابها</item>
+    </string-array>
     <string-array name="user">
         <item>بائع</item>
         <item>مشتري</item>
@@ -31,6 +39,20 @@
         <item>pet hotel</item>
     </string-array>
     <string-array name="suptype">
+        <item>العاب</item>
+        <item>صندوق للتنقل</item>
+        <item>قفص طيور</item>
+        <item>ادوات عناية</item>
+        <item>فيتامينات</item>
+        <item>طعام قطط</item>
+        <item>طعام اسماك</item>
+        <item>طعام طيور</item>
+        <item>طعام كلاب</item>
+        <item>طعام قوارض</item>
+        <item>طعام سلاحف</item>
+    </string-array>
+    <string-array name="type1">
+        <item>الكل</item>
         <item>العاب</item>
         <item>صندوق للتنقل</item>
         <item>قفص طيور</item>

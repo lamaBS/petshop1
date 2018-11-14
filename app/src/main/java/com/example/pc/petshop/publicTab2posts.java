@@ -11,7 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +30,14 @@ import com.squareup.picasso.Picasso;
  * Created by hadeel on 2/10/18.
  */
 
-public class publicTab2posts extends AppCompatActivity {
+public class publicTab2posts extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private RecyclerView mPostList;
-    private DatabaseReference databaseReference;
+    static DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private Query mQueryCurrentOwner;
+     static Query mQueryCurrentOwner;
+    static String serv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +53,14 @@ public class publicTab2posts extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         String currentUID= mAuth.getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Pet");
-      //  mQueryCurrentOwner = databaseReference;
+        mQueryCurrentOwner = databaseReference;
                 //.orderByChild("uid").equalTo(currentUID);
+        Spinner spinner=findViewById(R.id.cityspinner);
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.cityall,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
     }
 
     @Override
@@ -60,7 +70,7 @@ public class publicTab2posts extends AppCompatActivity {
                 Pet.class,
                 R.layout.public_card,
                 PostHolder.class,
-                databaseReference
+                mQueryCurrentOwner
 
         ) {
             @Override
@@ -85,6 +95,26 @@ public class publicTab2posts extends AppCompatActivity {
             }
         };
         mPostList.setAdapter(FBRA);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        serv =parent.getItemAtPosition(position).toString();
+        if(serv.equals("الكل")){
+        mQueryCurrentOwner=FirebaseDatabase.getInstance().getReference().child("Pet");
+        onStart();}
+      else {
+            mQueryCurrentOwner = FirebaseDatabase.getInstance().getReference().child("Pet").orderByChild("city").equalTo(serv);
+            onStart();
+        }
+    }
+
+    private void dofilter(String serv) {
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 

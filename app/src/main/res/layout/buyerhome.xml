@@ -11,7 +11,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/public_tab2_posts"
+        layout="@layout/public_tab1_posts"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

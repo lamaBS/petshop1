@@ -1,6 +1,14 @@
 package com.example.pc.petshop;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -220,9 +228,53 @@ Button send=findViewById(R.id.send);
 
 
 
+    }
 
+
+    public void notification(String notif){
+
+        createNotificationChannel();
+
+        //onclick the notification open the activity
+        Intent intent = new Intent(getApplicationContext()
+                ,chatting.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent,PendingIntent.FLAG_ONE_SHOT);
+        //
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_audiotrack_light);
+        builder.setContentTitle("Reminder to renew locker ");
+        builder.setContentText(notif);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setAutoCancel(true);//auto delete the notification when click it
+        builder.setContentIntent(pendingIntent);//onclick the notification open the activity
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
 
     }
+
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+
+            CharSequence name = "Personal Notification";
+            String description = "Include all the personal notification";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+    }
+
+
+
 }
 // chat= FirebaseDatabase.getInstance().getReference("Chat");
 //  String tid =chat.push().getKey();
