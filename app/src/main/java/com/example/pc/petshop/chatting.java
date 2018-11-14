@@ -38,6 +38,8 @@ import java.util.List;
 public class chatting extends AppCompatActivity{
     ListView listViewArtists;
     List<Chat> artists;
+    private final String CHANNEL_ID ="Notification";
+    private final int NOTIFICATION_ID= 001;
 String room;
 String typ="";
     DatabaseReference chat;
