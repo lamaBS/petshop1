@@ -1,11 +1,19 @@
 package com.example.pc.petshop;
 
 public class order {
-    private String ownerid,buyername,buyerid,type,price,id,img,city,username;
+    private String ownerid,buyername,buyerid,type,price,id,img,city,username,status;
   private  int quantity;
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setQuantity(int quantity) {
@@ -36,16 +44,22 @@ public class order {
         this.ownerid=p.ownerid;
         this.img=p.img;
         this.city=p.city;
+        this.status=p.status;
+        this.quantity=p.quantity;
+        this.buyerid=p.buyerid;
+        this.buyername=p.buyername;
+        this.username=p.username;
 
 
     }
-    public order (String ownerid , String type, String price, String id, String img,String city) {
+    public order (String ownerid , String type, String price, String id, String img,String city,String st) {
         this.ownerid = ownerid;
         this.type = type;
         this.price = price;
         this.id = id;
         this.img=img;
         this.city=city;
+        this.status=st;
     }
     public String getCity() {
         return city;

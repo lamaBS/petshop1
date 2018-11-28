@@ -18,12 +18,14 @@
             android:icon="@drawable/person"
             android:title="اضافة مستلزمات حيوانات للبيع " />
     </group>
-    <group android:checkableBehavior="single" android:visible="true" android:id="@+id/sugesstionmenuu">
+    <group android:checkableBehavior="single" android:visible="true" android:id="@+id/chatt">
         <item android:id="@+id/sugesstionmenu"
             android:icon="@drawable/person"
             android:title="ارسال اقتراح" />
-    </group>
-    <group android:checkableBehavior="single" android:visible="true" android:id="@+id/chatt">
+        <item android:id="@+id/orders"
+            android:icon="@drawable/person"
+            android:title=" طلبات الشراء" />
+
         <item android:id="@+id/chat"
             android:icon="@drawable/person"
             android:title="التواصل مع العملاء" />

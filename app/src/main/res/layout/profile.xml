@@ -89,36 +89,24 @@
                 android:layout_height="1dp"
                 android:background="#fff" />
 
-            <EditText
-                android:id="@+id/cityP"
+            <TextView
+                android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
-                android:hint="المدينة"
+                android:text="المدينة"
                 android:maxLines="1"
                 android:padding="8dp"
-                android:textColorHint="#fff"
+                android:textColor="#fff"
                 android:textStyle="bold"
                 tools:targetApi="jelly_bean_mr1" />
-
-            <EditText
-                android:id="@+id/emailP"
+            <Spinner
+                android:id="@+id/cityspinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/transparent"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="البريد الالكتروني"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColorHint="#fff"
-                android:textStyle="bold"
-                tools:targetApi="jelly_bean_mr1" />
-
+                android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pc.petshop">
+    package="com.example.pc.petshop"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <application
         android:allowBackup="true"
@@ -56,6 +58,8 @@
         <activity
             android:name=".view_all_suggestion" />
         <activity
+            android:name=".viewcartforbuyer" />
+        <activity
             android:name=".SinglePostView" />
         <activity
             android:name=".viewallEvent" />
@@ -70,6 +74,12 @@
             android:name=".buyerchatlist" />
         <activity
             android:name=".viewHotel" />
+        <activity
+            android:name=".cartitems" />
+        <activity
+            android:name=".recevedorders" />
+        <activity
+            android:name=".viewcartforseller" />
     </application>
 
 </manifest>

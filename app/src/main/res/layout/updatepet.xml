@@ -167,34 +167,6 @@
                 android:layout_height="wrap_content">
 
 
-                <Button
-                    android:id="@+id/Pimage"
-                    style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="103dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/uplode"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="16dp"
-                    android:textAllCaps="false" />
-
-                <TextView
-                    android:id="@+id/urlEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@android:color/transparent"
-                    android:drawablePadding="12dp"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:hint="تحميل الصورة"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColorHint="#fff"
-                    android:textStyle="bold"
-                    tools:targetApi="jelly_bean_mr1" />
             </LinearLayout>
 
 

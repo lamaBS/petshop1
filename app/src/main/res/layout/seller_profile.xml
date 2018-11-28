@@ -138,7 +138,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#008000"
-            android:onClick="viewpets"
             android:text="الحيوانات المعروضة للبيع" />
 
 

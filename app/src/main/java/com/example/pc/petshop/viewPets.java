@@ -67,13 +67,13 @@ public class viewPets extends AppCompatActivity {
                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                     Pet artist = artists.get(i);
-                    showUpdateDeleteDialog(artist.getId(),artist.getAge(),artist.getCity(),artist.getPrice(),artist.getType(),artist.getColor());
+                    showUpdateDeleteDialog(artist.getId(),artist.getAge(),artist.getCity(),artist.getPrice(),artist.getType(),artist.getColor(),artist.getImg());
                     return true;
                 }
             });
         }
 
-        private void showUpdateDeleteDialog(final String id,final String age,final String city ,final String price, final String type,final String color) {
+        private void showUpdateDeleteDialog(final String id,final String age,final String city ,final String price, final String type,final String color,final String imgg) {
 
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
             LayoutInflater inflater = getLayoutInflater();
@@ -94,7 +94,7 @@ public class viewPets extends AppCompatActivity {
             editTextcity.setText(city);
             editTextcolor.setText(color);
             //
-            final Button buttonimage = (Button) dialogView.findViewById(R.id.Pimage);
+
             final Button buttonUpdate = (Button) dialogView.findViewById(R.id.addbutton);
             final Button buttndelete = (Button) dialogView.findViewById(R.id.delete);
             //
@@ -113,7 +113,7 @@ public class viewPets extends AppCompatActivity {
                     String color= editTextcolor.getText().toString().trim();
 
                     if (!TextUtils.isEmpty(name)&& !TextUtils.isEmpty(price) && !TextUtils.isEmpty(agee) && !TextUtils.isEmpty(city)&& !TextUtils.isEmpty(color)) {
-                        updateItem(color,id,name,price,city,agee);
+                        updateItem(color,id,name,price,city,agee,imgg);
                         b.dismiss();
                     }
                     else{
@@ -134,7 +134,7 @@ public class viewPets extends AppCompatActivity {
             });
         }
 
-        private void updateItem(final String colo,final String tid,final String typ,final String price,final String city,final String agee) {
+        private void updateItem(final String colo,final String tid,final String typ,final String price,final String city,final String agee,final String imgg) {
 
             final double pr;
             try{
@@ -152,6 +152,7 @@ public class viewPets extends AppCompatActivity {
                     t.setPrice(pr+"");
                     t.setCity(city);
                     t.setId(tid);
+                    t.setImg(imgg);
                     t.setOwnerid(id);
                     t.setColor(colo);
                     myRef.child("Pet").child(tid).setValue(t); }

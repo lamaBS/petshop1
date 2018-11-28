@@ -1,6 +1,8 @@
 package com.example.pc.petshop;
 
 import android.app.NotificationChannel;
+import com.google.firebase.auth.FirebaseUser;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -38,24 +40,46 @@ import java.util.List;
 public class chatting extends AppCompatActivity{
     ListView listViewArtists;
     List<Chat> artists;
+    DatabaseReference databaseann;
+    private FirebaseUser user;
+    static String e="";
+    private DatabaseReference appUse;
     private final String CHANNEL_ID ="Notification";
     private final int NOTIFICATION_ID= 001;
 String room;
 String typ="";
     DatabaseReference chat;
     Button button;
-    DatabaseReference myRef;
-    DatabaseReference type;
+    DatabaseReference databaseref;
+    DatabaseReference myRef,not;
+    String type="hi";
     FirebaseAuth mAuth;
     String name="  ";
     String me="me";
+    String recever="him";
+    ////////////
+
+
+
+
+
+
+
+
+   ///////////////////////////////////////////
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        databaseann = FirebaseDatabase.getInstance().getReference("announcement");
+        appUse=FirebaseDatabase.getInstance().getReference("type");
+        mAuth= FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatting);
+
         Bundle b = getIntent().getExtras();
         room = b.getString("room");
         me = b.getString("me");
+        recever = b.getString("recever");
         Toast.makeText(getApplicationContext(),me, Toast.LENGTH_LONG).show();
         if (room == null) {
        return;
@@ -73,39 +97,84 @@ Button send=findViewById(R.id.send);
                 send();
             }
         });
+
+     /*   databaseann.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot artistSnapshot :dataSnapshot.getChildren() ){
+
+                    announcement save1=artistSnapshot.getValue(announcement.class);
+
+                    if(user.getEmail().equals(save1.getName())){
+
+                        notification(save1.getAnn());
+                        databaseann= FirebaseDatabase.getInstance().getReference("announcement").child(save1.getId());
+                        //save the value to the
+
+                        databaseann.removeValue();
+
+                    }
+
+                }
+
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext()
+                        ,"Check your Internet connection", Toast.LENGTH_LONG).show();
+            }
+        });
+
+*/
+
+
+
+
+
        // Long tsLong = System.currentTimeMillis()/1000;
         //String ts = tsLong.toString();
       //  Toast.makeText(this, " "+ts+" time", Toast.LENGTH_LONG).show();
     }
-        @Override
-        public void onStart() {
-            super.onStart();
 
-            myRef= FirebaseDatabase.getInstance().getReference();
-            myRef.child("Chat").child(room).orderByChild("date").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                            artists.clear();
-
-                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                Chat artist =new Chat(ds.getValue(Chat.class));
-                                artists.add(artist);
-                            }
+    /////
 
 
-                            //creating adapter
-                            Chat_list artistAdapter = new Chat_list(chatting.this, artists);
-                            //attaching adapter to the listview
-                            listViewArtists.setAdapter(artistAdapter);
-                        }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
+                                              //////
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        myRef= FirebaseDatabase.getInstance().getReference();
+        myRef.child("Chat").child(room).orderByChild("date").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                artists.clear();
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Chat artist =new Chat(ds.getValue(Chat.class));
+                    artists.add(artist);
                 }
-            });
-        }
+
+
+                //creating adapter
+                Chat_list artistAdapter = new Chat_list(chatting.this, artists);
+                //attaching adapter to the listview
+                listViewArtists.setAdapter(artistAdapter);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+
+    }
 
     public void send() {
         final String ms;
@@ -113,9 +182,11 @@ Button send=findViewById(R.id.send);
            ms = msg.getText().toString();
            if(TextUtils.isEmpty(ms))
                return;
-
+        not= FirebaseDatabase.getInstance().getReference("announcement");
         mAuth = FirebaseAuth.getInstance();
         final String user2=mAuth.getCurrentUser().getUid();
+
+
 
         chat= FirebaseDatabase.getInstance().getReference("Chat");
         String tid =chat.push().getKey();
@@ -127,104 +198,72 @@ Button send=findViewById(R.id.send);
         String ts = tsLong.toString();
         ch.setDate(ts);
         chat.child(room).child(tid).setValue(ch);
+       // notification(ms);
+//get email
 
-/*
-        //to get the type and name
-        type= FirebaseDatabase.getInstance().getReference("APPUsers");
-        type.child(user2).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String t= dataSnapshot.child("type").getValue(String.class);
-                typ=t;
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+        databaseref = FirebaseDatabase.getInstance().getReference();
 
-            }
-        });
-        DatabaseReference d=FirebaseDatabase.getInstance().getReference();
-        DatabaseReference d1=FirebaseDatabase.getInstance().getReference();
-        DatabaseReference d2=FirebaseDatabase.getInstance().getReference();
-        if(typ.equalsIgnoreCase("Customer")){
-            d.child("Customer").child(user2).addValueEventListener(new ValueEventListener() {
+        appUse.child(recever).child("type").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    chat= FirebaseDatabase.getInstance().getReference("Chat");
-                    String n= dataSnapshot.child("cfirstName").getValue(String.class);
-                    String tid =chat.push().getKey();
-                    Chat ch =new Chat();
-                    ch.setMsg(ms);
-                    ch.setUser(user2);
-                    Long tsLong = System.currentTimeMillis()/1000;
-                    String ts = tsLong.toString();
-                    ch.setDate(ts);
-                    ch.setName(n);
-                    chat.child(room).child(tid).setValue(ch);
-                  }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
+                    type=dataSnapshot.getValue(String.class).trim();
 
+                    if(type.equals("buyer")){
+                        // Read from the database
+                        databaseref.child("buyer").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                 e = dataSnapshot.child(recever).child("cemail").getValue(String.class);
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                // Failed to read value
+                                Toast.makeText(chatting.this, "لايوجد اتصال بالانترنت", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
+                        //
+
+                    }
+                    else{
+// Read from the database
+                        databaseref.child("seller").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                e = dataSnapshot.child(recever).child("cemail").getValue(String.class);
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                // Failed to read value
+                                Toast.makeText(chatting.this, "لايوجد اتصال بالانترنت", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
+                        //
+
+                    } }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+///
                 }
             });
-        }
-        else
 
-        if(typ.equalsIgnoreCase("PrivateOwner")){
-            d1.child("PrivateFoodTruckOwner").child(user2).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+        // Singed in successfull
+        //get email
 
-                    String n= dataSnapshot.child("fusername").getValue(String.class);
-
-                    chat= FirebaseDatabase.getInstance().getReference("Chat");
-                    String tid =chat.push().getKey();
-                    Chat ch =new Chat();
-                    ch.setMsg(ms);
-                    ch.setUser(user2);
-                    Long tsLong = System.currentTimeMillis()/1000;
-                    String ts = tsLong.toString();
-                    ch.setDate(ts);
-                    ch.setName(n);
-                    chat.child(room).child(tid).setValue(ch);
-                }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-
-                }
-            });
-        }
-        else
-        if(typ.equalsIgnoreCase("PublicOwner")){
-            d2.child("PublicFoodTruckOwner").child(user2).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    String n= dataSnapshot.child("fusername").getValue(String.class);
-
-                    chat= FirebaseDatabase.getInstance().getReference("Chat");
-                    String tid =chat.push().getKey();
-                    Chat ch =new Chat();
-                    ch.setMsg(ms);
-                    ch.setUser(user2);
-                    Long tsLong = System.currentTimeMillis()/1000;
-                    String ts = tsLong.toString();
-                    ch.setDate(ts);
-                    ch.setName(n);
-                    chat.child(room).child(tid).setValue(ch);
-                }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-
-                }
-            });
-        }
-        //to get the type and name
-        */
+        final  String tid1 =not.push().getKey();
+     //   Toast.makeText(chatting.this,"تم اضافة "+e, Toast.LENGTH_LONG).show();
+        announcement sms = new announcement(tid1,e,ms);
+        //notification(ms);
+        sms.setOb(sms);
+        sms.setAnn(ms);
+        not.child(tid1).setValue(sms);
         msg.setText("");
 
 
@@ -232,7 +271,7 @@ Button send=findViewById(R.id.send);
 
     }
 
-
+/*
     public void notification(String notif){
 
         createNotificationChannel();
@@ -247,7 +286,7 @@ Button send=findViewById(R.id.send);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_audiotrack_light);
-        builder.setContentTitle("Reminder to renew locker ");
+        builder.setContentTitle("محادثه جديده");
         builder.setContentText(notif);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setAutoCancel(true);//auto delete the notification when click it
@@ -257,6 +296,7 @@ Button send=findViewById(R.id.send);
         notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
 
     }
+
 
     private void createNotificationChannel(){
 
@@ -276,8 +316,8 @@ Button send=findViewById(R.id.send);
     }
 
 
+*/
 
-}
 // chat= FirebaseDatabase.getInstance().getReference("Chat");
 //  String tid =chat.push().getKey();
 //  Chat ch1 =new Chat("تم بدءالدردشه","truckStation","truckStation",(System.currentTimeMillis()/1000)+"");
@@ -301,3 +341,6 @@ Button send=findViewById(R.id.send);
 //  ch.setName(a);
 
 
+
+
+}

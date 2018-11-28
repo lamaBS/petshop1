@@ -18,23 +18,19 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by wafa0 on 27/03/18.
- */
-
-public class buyerchatlist extends AppCompatActivity {
+public class viewcartforbuyer extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     ListView listViewArtists;
-    List<Chatroom> artists;
+    List<carto> artists;
     FirebaseAuth firebaseAuth;
     DatabaseReference name;
-
+    private FirebaseUser CurrentOwner;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.buyerchatlist);
-
-
+        setContentView(R.layout.viewcartforbuyer);
+        firebaseAuth= FirebaseAuth.getInstance();
+        CurrentOwner=firebaseAuth.getCurrentUser();
         listViewArtists = (ListView) findViewById(R.id.listViewTracks);
         //list to store artists
         artists = new ArrayList<>();
@@ -43,33 +39,16 @@ public class buyerchatlist extends AppCompatActivity {
         listViewArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                final String id1 = user.getUid();//customer id is the
-                final int pos = position;
-                name = FirebaseDatabase.getInstance().getReference();
-                name.child("buyer").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String name = dataSnapshot.child(id1).child("fusername").getValue(String.class);
-                        Intent intent = new Intent(buyerchatlist.this, chatting.class);
-                        Chatroom artist = artists.get(pos);
-                        Bundle b = new Bundle();
-                        b.putString("room", artist.getroom());
-                        b.putString("me", name);
-                        b.putString("recever",artist.getFID());
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-
-                    }
-                });
-
-                //   String
-
+                carto artist = artists.get(position);
+                String ownerid=artist.getId();
+                String buyerid=artist.getBuyerid();
+                Intent intent = new Intent(viewcartforbuyer.this,cartitems.class);
+                Bundle b=new Bundle();
+                b.putString("oid",ownerid);
+                b.putString("bid",buyerid);
+                intent.putExtras(b);
+                startActivity(intent);
 
             }
         });
@@ -84,16 +63,16 @@ public class buyerchatlist extends AppCompatActivity {
         //attaching value event listener
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String id = user.getUid();//customer id is the same as rating id to make it easy to refer
-        myRef.child("Chatroom").orderByChild("cid").equalTo(id).addValueEventListener(new ValueEventListener() {
+        myRef.child("carto").child(CurrentOwner.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 artists.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Chatroom artist = new Chatroom(ds.getValue(Chatroom.class));
+                    carto artist = new carto(ds.getValue(carto.class));
                     artists.add(artist);
                 }
                 //creating adapter
-                chatroom_adapter2 artistAdapter = new chatroom_adapter2(buyerchatlist.this, artists);
+                cartadapter artistAdapter = new cartadapter(viewcartforbuyer.this, artists);
                 //attaching adapter to the listview
                 listViewArtists.setAdapter(artistAdapter);
             }

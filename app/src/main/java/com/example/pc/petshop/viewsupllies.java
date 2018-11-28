@@ -65,13 +65,13 @@ public class viewsupllies extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Supplies artist = artists.get(i);
-                showUpdateDeleteDialog(artist.getId(),artist.getCity(),artist.getPrice(),artist.getType());
+                showUpdateDeleteDialog(artist.getId(),artist.getCity(),artist.getPrice(),artist.getType(),artist.getImg());
                 return true;
             }
         });
     }
 
-    private void showUpdateDeleteDialog(final String id,final String city ,final String price, final String type) {
+    private void showUpdateDeleteDialog(final String id,final String city ,final String price, final String type, final String imgg) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -87,7 +87,6 @@ public class viewsupllies extends AppCompatActivity {
         editTextprice.setText(price);
         editTextcity.setText(city);
         //
-        final Button buttonimage = (Button) dialogView.findViewById(R.id.Pimage);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.addbutton);
         final Button buttndelete = (Button) dialogView.findViewById(R.id.delete);
         //
@@ -103,7 +102,7 @@ public class viewsupllies extends AppCompatActivity {
                 String city= editTextcity.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(t)&& !TextUtils.isEmpty(price) && !TextUtils.isEmpty(city)) {
-                    updateItem(id,t,price,city);
+                    updateItem(id,t,price,city,imgg);
                     b.dismiss();
                 }
                 else{
@@ -124,7 +123,7 @@ public class viewsupllies extends AppCompatActivity {
         });
     }
 
-    private void updateItem(final String tid,final String tt,final String price,final String city) {
+    private void updateItem(final String tid,final String tt,final String price,final String city, final String imgg) {
 
         final double pr;
         try{
@@ -137,7 +136,7 @@ public class viewsupllies extends AppCompatActivity {
         String id = user.getUid();//customer id is the same as rating id to make it easy to refer
         Supplies t=new Supplies();
         t.setType(tt);
-        t.setImg("here url");
+        t.setImg(imgg);
         t.setPrice(pr+"");
         t.setCity(city);
         t.setId(tid);

@@ -1,6 +1,13 @@
 package com.example.pc.petshop;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -25,11 +32,15 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class welcome  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
+    private final String CHANNEL_ID ="Notification";
+    private final int NOTIFICATION_ID= 001;
     DatabaseReference UDB;
     private FirebaseAuth mAuth;
     Button button;
     DatabaseReference databaseref;
+    DatabaseReference databaseann;
+    private FirebaseUser user;
+
     DatabaseReference databaseReferences;
     TextView username;
     TextView mail;
@@ -51,9 +62,8 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
        setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
        //
-
-
-
+        databaseann = FirebaseDatabase.getInstance().getReference("announcement");
+        user = mAuth.getCurrentUser();
         databaseref = FirebaseDatabase.getInstance().getReference();
 
         // Read from the database
@@ -97,6 +107,38 @@ public class welcome  extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        databaseann.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot artistSnapshot :dataSnapshot.getChildren() ){
+
+                    announcement save1=artistSnapshot.getValue(announcement.class);
+
+                    if(user.getEmail().equals(save1.getName())){
+
+                        notification(save1.getAnn());
+                        databaseann= FirebaseDatabase.getInstance().getReference("announcement").child(save1.getId());
+                        //save the value to the
+
+                        databaseann.removeValue();
+
+                    }
+
+                }
+
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext()
+                        ,"Check your Internet connection", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
@@ -176,6 +218,13 @@ public void showtext(){
             drawer.closeDrawer(GravityCompat.START);
             return true;
         }
+        else if (id == R.id.orders) {
+            Intent intent = new Intent(welcome.this, viewcartforseller.class);
+            startActivity(intent);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
         else if (id == R.id.nav_logout) {
 
             mAuth.signOut();
@@ -199,5 +248,56 @@ public void showtext(){
         Intent intent = new Intent(welcome.this, viewPets.class);
         startActivity(intent);
 
+
+
     }
+
+    public void notification(String notif){
+
+        createNotificationChannel();
+
+        //onclick the notification open the activity
+        Intent intent = new Intent(getApplicationContext()
+                ,welcome.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent,PendingIntent.FLAG_ONE_SHOT);
+        //
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_audiotrack_light);
+        builder.setContentTitle("إشعار جديد");
+        builder.setContentText(notif);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setAutoCancel(true);//auto delete the notification when click it
+        builder.setContentIntent(pendingIntent);//onclick the notification open the activity
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+
+    }
+
+
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+
+            CharSequence name = "Personal Notification";
+            String description = "Include all the personal notification";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+    }
+
+
+
 }
+
+
+

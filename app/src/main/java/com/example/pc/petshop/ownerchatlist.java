@@ -55,6 +55,7 @@ public class ownerchatlist extends AppCompatActivity {
                         Bundle b=new Bundle();
                         b.putString("room",artist.getroom());
                         b.putString("me",name);
+                        b.putString("recever",artist.getCID());
                         intent.putExtras(b);
                         startActivity(intent);
                     }

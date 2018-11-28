@@ -65,4 +65,9 @@
         <item>طعام قوارض</item>
         <item>طعام سلاحف</item>
     </string-array>
+    <string-array name="price">
+        <item>الكل</item>
+        <item>من الاعلى الى الاقل سعرا</item>
+        <item>من الاقل الى الاعلى سعرا</item>
+    </string-array>
 </resources>

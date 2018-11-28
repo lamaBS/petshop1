@@ -41,7 +41,7 @@ public class SinglePostView2 extends AppCompatActivity {
     private Button buyy;
     static int q;
     private DatabaseReference databaseOWner;
-    DatabaseReference myRef;
+    DatabaseReference myRef,tst;
 
     private DatabaseReference cartowner;
     FirebaseAuth mAuth;
@@ -61,6 +61,7 @@ public class SinglePostView2 extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+        tst = database.getReference();
         cartowner = database.getReference();
         postImage=(ImageView)findViewById(R.id.single_post_image);
         post_title=(TextView)findViewById(R.id.single_imageTitle);
@@ -97,21 +98,34 @@ public class SinglePostView2 extends AppCompatActivity {
                         databaseOWner.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
+                                final  String tid =myRef.push().getKey();
                                 order t1= new order ();
                                 t1.setBuyerid(CurrentOwner.getUid());
                                 t1.setCity(cit);
-                                t1.setId(post_id);
+                                t1.setId(tid);
                                 t1.setOwnerid(postOwnerID);
                                 int price=Integer.parseInt(postTitle);
                                 t1.setPrice(""+price*q);
                                 t1.setType(postDesc);
                                 t1.setQuantity(q);
+                                t1.setStatus("في الانتظار");
                                 t1.setUsername(postUsername);
-                                myRef.child("order").child(CurrentOwner.getUid()).child(postOwnerID).setValue(t1);
+                                myRef.child("order").child(CurrentOwner.getUid()).child(tid).setValue(t1);
                                 Toast.makeText(SinglePostView2.this, "تم اضافة الطلب للسلة", Toast.LENGTH_LONG).show();
-                                carto o=new carto(postOwnerID,postUsername);
-                                 cartowner.child(CurrentOwner.getUid()).child(postOwnerID).setValue(o);
-                                myRef.child("order").child(CurrentOwner.getUid()).child(postOwnerID).child("buyername").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                carto o=new carto(postOwnerID,postUsername,CurrentOwner.getUid());
+                              //  final  String j =cartowner.push().getKey();
+                                 cartowner.child("carto").child(CurrentOwner.getUid()).child(postOwnerID).setValue(o);
+
+
+                                myRef.child("order").child(CurrentOwner.getUid()).child(tid).child("buyername").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+
+                                        }
+                                    }
+                                });
+                                tst.child("carto").child(CurrentOwner.getUid()).child(postOwnerID).child("buyername").setValue(dataSnapshot.child("cfirstName").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
@@ -120,7 +134,6 @@ public class SinglePostView2 extends AppCompatActivity {
                                         }
                                     }
                                 });
-
                             }
 
                             @Override
@@ -129,8 +142,6 @@ public class SinglePostView2 extends AppCompatActivity {
                             }
                         });
 
-                        Intent intent=new Intent(SinglePostView2.this,paymentmethod.class);
-                        startActivity(intent);
                     }
                 });
 /*
